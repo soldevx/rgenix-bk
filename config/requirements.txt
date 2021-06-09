@@ -1,0 +1,4 @@
+pdfminer.six==20201018
+nltk==3.5
+gensim==4.0.1
+python-Levenshtein-wheels==0.13.2
