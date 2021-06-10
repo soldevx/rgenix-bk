@@ -5,7 +5,7 @@ python test_suite test
 python test_suite cov
 """
 
-import unittest
+#import unittest
 '''
 from coverage import coverage
 '''
@@ -33,7 +33,7 @@ COV = coverage(
 )
 '''
 
-COV.start()
+#COV.start()
 
 # create flask application instance
 app = create_app_blueprint('development')
