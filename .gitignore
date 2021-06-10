@@ -1,1 +1,2 @@
-word2vec/GoogleNews-vectors-negative300.bin
+server/main/ml/GoogleNews-vectors-negative300.bin
+__pycache__
