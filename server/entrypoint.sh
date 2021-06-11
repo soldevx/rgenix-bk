@@ -16,7 +16,17 @@ done
 
 echo "PostgreSQL started!"
 
+if test -f "main/ml/GoogleNews-vectors-negative300.bin"; then
+  echo "Word2vec already on machine."
+else
+  echo "[START] Downloading Google Word2Vec..."
+  wget -nv -c "https://s3.amazonaws.com/dl4j-distribution/GoogleNews-vectors-negative300.bin.gz" -P main/ml
+  echo "[END] Downloaded Google Word2Vec..."
+  gzip -d main/ml/GoogleNews-vectors-negative300.bin.gz
+fi
+
 # Run below commands from manage.py to initialize db and have some default data.
 python manage.py recreate_db
 #python manage.py seed_db
+#chmod 666 /root/nltk_data
 uwsgi --ini /etc/uwsgi.ini

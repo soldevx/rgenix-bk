@@ -12,9 +12,5 @@ user_service = UserService()
 
 @route.route("/api/users")
 def test_db():
-    '''
-    users = user_service.all()
-    return users
-    '''
-    UserService().save(User('George', 'george@gmail.com', 'password'))
+    user_service.save(User('George', 'george@gmail.com', 'password', True))
     return 'Success'

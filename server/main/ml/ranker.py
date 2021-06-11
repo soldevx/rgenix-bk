@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
-from typing import List, Tuple
+from typing import List
 from re import sub
 from pdfminer.high_level import extract_text
 
-from os import listdir
-from os.path import isfile, join
+from os.path import abspath
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -15,7 +14,9 @@ from gensim.models import KeyedVectors
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-model = KeyedVectors.load_word2vec_format('./GoogleNews-vectors-negative300.bin', binary=True)
+module_path = abspath(__file__)
+parent_path = module_path[ : module_path.rfind('/')]
+model = KeyedVectors.load_word2vec_format(f'{parent_path}/GoogleNews-vectors-negative300.bin', binary=True)
 
 def cleanse_text(text : str) -> str:
     # remove numbers and special characters

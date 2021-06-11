@@ -1,0 +1,33 @@
+# Run docker-compose build
+# Run docker-compose up
+
+version: '2'
+
+services:
+  flask_demo:
+    container_name: resgenix_bk_container
+    restart: always
+    image: flask
+    build: ./server
+    volumes:
+    - ./server:/usr/src/app/server
+    env_file:
+     - .env
+
+  data:
+   container_name: resgenix_data_container
+   image: postgres:9.6
+   volumes:
+     - /var/lib/postgresql
+   command: "true"
+
+  postgres:
+   container_name: postgresql_container
+   restart: always
+   build: ./postgresql
+   volumes_from:
+     - data
+   ports:
+     - "5432:5432"
+   env_file:
+     - .env
